@@ -7,13 +7,13 @@ package wordTree.myTree;
 public class Node {
 
     String word;
-    int wordLength;
+    int wordCount;
     Node left;
     Node right;
     
     public Node(String wordIn) {
         this.word = wordIn;
-        this.wordLength = wordIn.length();
+        this.wordCount = 1;
         this.left = null;
         this.right = null;
     }
@@ -22,8 +22,12 @@ public class Node {
         return word;
     }
 
-    public int getWordLength() {
-        return wordLength;
+    public void setWordCount() {
+        this.wordCount += 1;
+    }
+    
+    public int getWordCount() {
+        return wordCount;
     }
 
     public Node getLeft() {
