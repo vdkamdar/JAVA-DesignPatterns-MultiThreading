@@ -1,6 +1,8 @@
 package wordTree.driver;
 
 import java.util.ArrayList;
+import wordTree.util.FileProcessor;
+import wordTree.util.InputProcessor;
 
 public class Driver {
 
@@ -52,5 +54,19 @@ public class Driver {
             System.out.println(word);
         }
         System.out.println("Debug value: " + debugLevel);
+        
+        /**
+         * Create FileProcessor instance
+         */
+        FileProcessor fp = new FileProcessor(inputFile, outputFile);
+        
+        /**
+         * Create InputProcessor instance
+         */
+        InputProcessor fip = new InputProcessor();
+        
+        /**
+         * 
+         */
     }
 }
