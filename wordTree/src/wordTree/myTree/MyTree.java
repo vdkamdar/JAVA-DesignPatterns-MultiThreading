@@ -1,4 +1,4 @@
-package myTree;
+package wordTree.myTree;
 
 /**
  *
