@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import wordTree.myTree.MyTree;
 
 /**
  * @version 3.0
@@ -46,12 +47,15 @@ public class FileProcessor {
      *
      * @param sf
      */
-    public void readLine() {
+    public void readLine(MyTree tree) {
         try (BufferedReader lineIn = new BufferedReader(new FileReader(inputFileName))) {
             try {
                 for (String line; (line = lineIn.readLine()) != null;) {
                     try {
-                        //sf.processInput(line);
+                        String [] inputPass = line.split("[^a-zA-Z0-9']+");
+                        for (int i = 0; i < inputPass.length; i++) {
+                            tree.insert(inputPass[i]);
+                        }
                     } catch (NumberFormatException ex) {
                         System.out.println(ex);
                     }
