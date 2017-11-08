@@ -63,35 +63,32 @@ You need to be in the base directory of the project to perform following operati
 
 ### File Structure ###
 
-wordTree 
- == README.md
- == src
-	=== build.xml
-	=== wordTree
-       	=== driver
-            === Driver.java
-        === util
-            === FileProcessor.java
-            === InputProcessor.java
-            === FileDisplayInterface.java
-            === StdoutDisplayInterface.java 
-	   		=== MyLogger.java 
-	   	=== store
-	   		=== Results.java
-	   	=== threadMgmt
-	   		=== CreateWorkers.java
-	   		=== PopulateThread.java
-	   		=== DeleteThread.java
+* wordTree 
+* == README.md
+* == src
+*	=== build.xml
+*	=== wordTree
+*      	=== driver
+*           === Driver.java
+*        === util
+*           === FileProcessor.java
+*           === InputProcessor.java
+*           === FileDisplayInterface.java
+*           === StdoutDisplayInterface.java 
+*   		=== MyLogger.java 
+* 	   	=== store
+*	   		=== Results.java
+*	   	=== threadMgmt
+*	   		=== CreateWorkers.java
+*	   		=== PopulateThread.java
+*	   		=== DeleteThread.java
 
 ### Cautions about the project ###
 
-* It accepts minimum 7 arguments: input file name, output file name, an integer for number of
-threads, words to deleted, an integer for debug level.
-* If the number of words to be deleted should be equal to the number of threads. Throws exception
-and exists the program; otherwise.
+* It accepts minimum 7 arguments: input file name, output file name, an integer for number of threads, words to deleted, an integer for debug level.
+* If the number of words to be deleted should be equal to the number of threads. Throws exception and exists the program; otherwise.
 * Input and output file paths should be valid and accessible. Throws exception otherwise.
-* If the output file specified does not exist, then it creates the file "Output.txt" and writes
-theh final output into it.
+* If the output file specified does not exist, then it creates the file "Output.txt" and writes theh final output into it.
 * This project considers case-sensitivity between the strings being compared.
 
 ### Who do I talk to? ###
@@ -103,7 +100,7 @@ theh final output into it.
 
 ### Declaration ###
 
-"I have done this assignment completely on my own. I have not copied
+"I have done this assignment completely on my own. I have not copied 
 it, nor have I given my solution to anyone else. I understand that if
 I am involved in plagiarism or cheating I will have to sign an
 official form that I have cheated and that this form will be stored in
