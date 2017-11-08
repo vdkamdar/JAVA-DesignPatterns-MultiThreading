@@ -8,8 +8,8 @@ public class MyLogger {
 
     /*DEBUG_VALUE=4 [Print to stdout everytime a constructor is called]
       DEBUG_VALUE=3 [Print to stdout everytime a thread's run() method is called]
-      DEBUG_VALUE=2 [Print to stdout everytime an insertion/deletion is performed]
-      DEBUG_VALUE=1 [Print to stdout everytime a deletion is performed]
+      DEBUG_VALUE=2 [Print to stdout everytime an insertion is attempted]
+      DEBUG_VALUE=1 [Print to stdout everytime a deletion is attempted]
       DEBUG_VALUE=0 [No output should be printed from the application to stdout. However, it doesn't affect what's get written to the output file." ]
      */
     public static enum DebugLevel {
