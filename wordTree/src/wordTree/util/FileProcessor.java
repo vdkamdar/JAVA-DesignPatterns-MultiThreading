@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import wordTree.myTree.MyTree;
 
 /**
@@ -28,7 +29,7 @@ public class FileProcessor {
      * @param outputFileIn
      */
     public FileProcessor(String inputFileIn, String outputFileIn) {
-        Logger.writeMessage("Constructor called - " + this.toString(), Logger.DebugLevel.CONSTRUCTOR);
+        MyLogger.writeMessage("Constructor called - " + this.toString(), MyLogger.DebugLevel.CONSTRUCTOR);
         if (inputFileIn == null) {
             System.err.println("Input File name is null!");
             System.exit(0);
@@ -67,10 +68,8 @@ public class FileProcessor {
                 return line;
             }
             line = null;
-            closeInScanner();
             return line;
         } catch (Exception e) {
-            closeInScanner();
             throw e;
         }
     }
@@ -84,7 +83,7 @@ public class FileProcessor {
 
     /**
      * Additional method to write to any file if required.
-     * 
+     *
      * @param outputLine
      */
     public void writeLine(String outputLine) {
@@ -95,13 +94,13 @@ public class FileProcessor {
                 pw.println(outputLine);
             }
         } catch (IOException ex) {
-            Logger.writeMessage(ex.getMessage(), Logger.DebugLevel.RELEASE);
+            System.out.println("");
         }
     }
 
     @Override
     public String toString() {
-        return "FileProcessor";
+        return "Class : wordTree.util.FileProcessor";
     }
 
 }
