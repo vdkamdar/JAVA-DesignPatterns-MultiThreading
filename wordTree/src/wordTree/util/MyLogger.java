@@ -4,19 +4,19 @@ package wordTree.util;
  * @version 1.0
  * @author Aniruddha Tekade Submitted on October 19th, 2017.
  */
-public class Logger {
+public class MyLogger {
 
     /*DEBUG_VALUE=4 [Print to stdout everytime a constructor is called]
-      DEBUG_VALUE=3 [Print to stdout everytime the state is changed]
-      DEBUG_VALUE=2 [Print to stdout everytime a set of operations are performed]
-      DEBUG_VALUE=1 [Print to stdout everytime an exception occurs and handles]
-      DEBUG_VALUE=0 [No output should be printed from the application to stdout. It is ok to write to the output file though" ]
+      DEBUG_VALUE=3 [Print to stdout everytime a thread's run() method is called]
+      DEBUG_VALUE=2 [Print to stdout everytime an insertion/deletion is performed]
+      DEBUG_VALUE=1 [Print to stdout everytime a deletion is performed]
+      DEBUG_VALUE=0 [No output should be printed from the application to stdout. However, it doesn't affect what's get written to the output file." ]
      */
     public static enum DebugLevel {
         RELEASE,
-        FROM_RESULTS,
-        IN_RESULTS,
-        IN_RUN,
+        WORD_DELETION,
+        WORD_INSERTION,
+        THREAD_RUN,
         CONSTRUCTOR
     };
 
@@ -28,13 +28,13 @@ public class Logger {
                 debugLevel = DebugLevel.CONSTRUCTOR;
                 break;
             case 3:
-                debugLevel = DebugLevel.IN_RUN;
+                debugLevel = DebugLevel.THREAD_RUN;
                 break;
             case 2:
-                debugLevel = DebugLevel.IN_RESULTS;
+                debugLevel = DebugLevel.WORD_INSERTION;
                 break;
             case 1:
-                debugLevel = DebugLevel.FROM_RESULTS;
+                debugLevel = DebugLevel.WORD_DELETION;
                 break;
             case 0:
                 debugLevel = DebugLevel.RELEASE;
