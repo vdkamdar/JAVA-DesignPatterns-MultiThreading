@@ -16,7 +16,7 @@ public class MyTree {
         return root;
     }
 
-    public void insert(String wordIn) {
+    public synchronized void insert(String wordIn) {
         if (root == null) {
             this.root = new Node(wordIn);
         } else {
@@ -60,7 +60,7 @@ public class MyTree {
         }
     }
 
-    public void delete(int bNumber, String course) {
+    public synchronized void delete(int bNumber, String course) {
 //        Node status = searchNode(root, bNumber);
 //        if (status != null) {
 //            ArrayList<String> courses = status.getCourses();

@@ -1,0 +1,11 @@
+A quick brown fox jumps over the lazy dog
+The question of whether a computer can think is no more interesting 
+than the question of whether a submarine can swim Edsger W Dijkstra
+
+The best programs are written so that computing machines can perform
+them quickly and so that human beings can understand them clearly A
+programmer is ideally an essayist who works with traditional aesthetic
+and literary forms as well as mathematical concepts to communicate
+the way that an algorithm works and to convince a reader that the
+results will be correct Donald Ervin Knuth Selected Papers on Computer
+Science.

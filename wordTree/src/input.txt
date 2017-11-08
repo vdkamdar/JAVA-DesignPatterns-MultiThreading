@@ -91,7 +91,7 @@ software should still work. One everyday language way of expressing this is that
 Person. Is a is always a good thought test to run when you are thinking of using inheritance.
 
 'You are very right, Comrade Jackson. I am the victim of Fate. Ah, so
-you put the little chaps in there, do you?' he said, as Mike, reaching
+you put the little chaps in there, do you?' he said, as Mike, reaching 
 the post-office, began to bundle the letters into the box. 'You seem to
 have grasped your duties with admirable promptitude. It is the same
 with me. I fancy we are both born men of Commerce. In a few years we
@@ -115,7 +115,7 @@ They hurried through the garden and back into the house.
 Mr. Weasley was slumped in a kitchen chair with his glasses off
 and his eyes closed. He was a thin man, going bald, but the little
 hair he had was as red as any of his children’s. He was wearing long
-green robes, which were dusty and travel-worn. - Harry Potter and the chamber of Secrets.
+green robes, which were dusty and travel-worn. - Harry Potter and the chamber of Secrets. 
 
 All of the red-black tree algorithms that have been proposed are characterized by a worst-case
 search time bounded by a small constant multiple of lg N in a tree of N keys, and the behavior ob-

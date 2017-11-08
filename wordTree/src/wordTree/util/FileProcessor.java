@@ -56,7 +56,7 @@ public class FileProcessor {
      *
      * @param sf
      */
-    public String readLine() {
+    public synchronized String readLine() {
         String line = "";
         try {
             if (in == null) {
@@ -84,7 +84,7 @@ public class FileProcessor {
 
     /**
      * Additional method to write to any file if required.
-     *
+     * 
      * @param outputLine
      */
     public void writeLine(String outputLine) {

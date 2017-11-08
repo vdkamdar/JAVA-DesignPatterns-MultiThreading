@@ -59,14 +59,16 @@ public class Driver {
         }
         System.out.println("Debug value: " + debugLevel);
 
-        FileProcessor fp = new FileProcessor(inputFile, outputFile);
-        InputProcessor ip = new InputProcessor();
+        FileProcessor fileProc = new FileProcessor(inputFile, outputFile);
+        InputProcessor inputProc = new InputProcessor();
         MyTree tree = new MyTree();
         Results results = new Results();
-        CreateWorkers CW = new CreateWorkers(fp, ip, tree, results);
-
         
-        Node rootNode = tree.getRoot();
-        tree.printNodes(rootNode);
+        CreateWorkers createWorkers = new CreateWorkers(fileProc, inputProc, tree, results);
+        
+        createWorkers.startPopulateWorkers(NUM_THREADS);
+        
+        Node root = tree.getRoot();
+        tree.printNodes(root);
     }
 }
