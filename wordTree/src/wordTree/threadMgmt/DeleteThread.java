@@ -5,12 +5,14 @@ import wordTree.myTree.MyTree;
 import wordTree.store.Results;
 import wordTree.util.FileProcessor;
 import wordTree.util.InputProcessor;
+import wordTree.util.MyLogger;
 
 /**
  *
  * @author anirtek
  */
-public class DeleteThread implements Runnable{
+public class DeleteThread implements Runnable {
+
     private FileProcessor fp = null;
     private InputProcessor ip = null;
     private MyTree tree = null;
@@ -18,16 +20,24 @@ public class DeleteThread implements Runnable{
     private String wordToBeDeleted = null;
 
     DeleteThread(FileProcessor fpIn, InputProcessor ipIn, MyTree treeIn, Results resultsIn, String wordIn) {
-        fp = fpIn; 
+        MyLogger.writeMessage("Constructor called - " + this.toString(), MyLogger.DebugLevel.CONSTRUCTOR);
+        fp = fpIn;
         ip = ipIn;
         tree = treeIn;
         results = resultsIn;
         wordToBeDeleted = wordIn;
     }
-    
+
     public void run() {
-        System.out.println("****" + Thread.currentThread().getName() + "****");
+        MyLogger.writeMessage("Thread is running - " + this.toString(), MyLogger.DebugLevel.THREAD_RUN);
         tree.delete(wordToBeDeleted);
     }
+
+    @Override
+    public String toString() {
+        return "Class : wordTree.threadMgmt.DeleteThread"; //To change body of generated methods, choose Tools | Templates.
+    }
     
+    
+
 }

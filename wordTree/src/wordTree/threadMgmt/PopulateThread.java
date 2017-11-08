@@ -4,19 +4,21 @@ import wordTree.myTree.MyTree;
 import wordTree.store.Results;
 import wordTree.util.FileProcessor;
 import wordTree.util.InputProcessor;
+import wordTree.util.MyLogger;
 
 /**
  *
  * @author anirtek
  */
-public class PopulateThread implements Runnable{
-    
+public class PopulateThread implements Runnable {
+
     private FileProcessor fp = null;
     private InputProcessor ip = null;
     private MyTree tree = null;
     private Results results = null;
-    
+
     public PopulateThread(FileProcessor fpIn, InputProcessor ipIn, MyTree treeIn, Results resultsIn) {
+        MyLogger.writeMessage("Constructor called - " + this.toString(), MyLogger.DebugLevel.CONSTRUCTOR);
         fp = fpIn;
         ip = ipIn;
         tree = treeIn;
@@ -24,16 +26,22 @@ public class PopulateThread implements Runnable{
     }
 
     public void run() {
-        System.out.println("****" + Thread.currentThread().getName() + "****");
+        MyLogger.writeMessage("Thread is running - " + this.toString(), MyLogger.DebugLevel.THREAD_RUN);
         String line;
         while ((line = fp.readLine()) != null) {
             String[] inputPass = ip.processInput(line);
             for (int i = 0; i < inputPass.length; i++) {
                 String inputWord = inputPass[i];
                 tree.insert(inputWord); // working
-                System.out.println(inputWord);
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "Class : wordTree.threadMgmt.PopulateThread"; //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 
 }
