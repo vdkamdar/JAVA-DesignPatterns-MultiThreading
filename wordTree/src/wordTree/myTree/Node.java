@@ -1,5 +1,7 @@
 package wordTree.myTree;
 
+import wordTree.util.MyLogger;
+
 /**
  *
  * @author anirtek
@@ -10,8 +12,9 @@ public class Node {
     int wordCount;
     Node left;
     Node right;
-    
+
     public Node(String wordIn) {
+        MyLogger.writeMessage("Constructor called - " + this.toString(), MyLogger.DebugLevel.CONSTRUCTOR);
         this.word = wordIn;
         this.wordCount = 1;
         this.left = null;
@@ -23,9 +26,9 @@ public class Node {
     }
 
     public void setWordCount(int countIn) {
-        this.wordCount  = countIn;
+        this.wordCount = countIn;
     }
-    
+
     public int getWordCount() {
         return wordCount;
     }
@@ -45,4 +48,11 @@ public class Node {
     public void setRight(Node right) {
         this.right = right;
     }
+
+    @Override
+    public String toString() {
+        return "Class : wordTree.myTree.Node"; //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 }
