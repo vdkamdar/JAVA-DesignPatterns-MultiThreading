@@ -1,18 +1,13 @@
 package wordTree.util;
 
-/**
- *
- * @author anirtek
- */
-public class FileDisplayInterface {
-    public FileDisplayInterface() {
-        MyLogger.writeMessage("Constructor called - " + this.toString(), MyLogger.DebugLevel.CONSTRUCTOR);
-    }
+import wordTree.myTree.MyTree;
 
-    @Override
-    public String toString() {
-        return "wordTree.util.FileDisplayInterface"; //To change body of generated methods, choose Tools | Templates.
-    }
-    
+/**
+ * @version 4.0
+ * @author Aniruddha Tekade & Vidhi Kamdar Submitted on November 8th, 2017.
+ */
+public interface FileDisplayInterface {
+
+    public void writeSchedulesToFile(MyTree tree);
     
 }

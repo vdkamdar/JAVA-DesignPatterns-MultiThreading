@@ -13,8 +13,8 @@ import java.util.logging.Logger;
 import wordTree.myTree.MyTree;
 
 /**
- * @version 3.0
- * @author Aniruddha Tekade & Vidhi Kamdar : Submitted on October 19th, 2017.
+ * @version 4.0
+ * @author Aniruddha Tekade & Vidhi Kamdar Submitted on November 8th, 2017.
  */
 public class FileProcessor {
 

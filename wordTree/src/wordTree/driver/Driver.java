@@ -6,16 +6,27 @@ import wordTree.store.Results;
 import wordTree.threadMgmt.CreateWorkers;
 import wordTree.util.FileProcessor;
 import wordTree.util.InputProcessor;
+import wordTree.util.MyLogger;
 
+/**
+ * @version 4.0
+ * @author Aniruddha Tekade & Vidhi Kamdar Submitted on November 8th, 2017.
+ */
 public class Driver {
 
+    /**
+     * Driver code accepts minimum 6 number of inputs.
+     * It also validates every single input including filename and debug level.
+     * 
+     * @param args
+     * @throws Exception 
+     */
     public static void main(String args[]) throws Exception {
         String inputFile = null;
         String outputFile = null;
         int NUM_THREADS = 0;
         ArrayList<String> wordsToDelete = new ArrayList<String>();
         int debugLevel = 0;
-
         try {
             if (args.length >= 5) {
                 inputFile = args[0];
@@ -32,6 +43,7 @@ public class Driver {
                         }
                         if (args[args.length - 1].matches(".*[0-4].*")) {
                             debugLevel = Integer.parseInt(args[args.length - 1]);
+                            MyLogger.setDebugValue(debugLevel);
                         } else {
                             throw new IllegalArgumentException("The argument " + args[args.length - 1] + " is invalid. Please enter debug level between 0 and 4.");
                         }
@@ -50,26 +62,24 @@ public class Driver {
             System.exit(1);
         }
 
-//        System.out.println("Input File: " + inputFile);
-//        System.out.println("Output File: " + outputFile);
-//        System.out.println("NUM_THREADS: " + NUM_THREADS);
-//        for (String word : wordsToDelete) {
-//            System.out.println(word);
-//        }
-//        System.out.println("Debug value: " + debugLevel);
-
+        /**
+         * Creating instance of the FileProcessor
+         */
         FileProcessor fileProc = new FileProcessor(inputFile, outputFile);
+
+        /**
+         * Creating instance of the InputProcessor
+         */
         InputProcessor inputProc = new InputProcessor();
+        /**
+         * Create an instance
+         */
         MyTree tree = new MyTree();
         Results results = new Results(outputFile);
-
         CreateWorkers createWorkers = new CreateWorkers(fileProc, inputProc, tree, results, wordsToDelete);
-
         createWorkers.startPopulateWorkers(NUM_THREADS);
-
         createWorkers.startDeleteWorkers(NUM_THREADS);
-        
+        results.writeToScreen();
         results.writeSchedulesToFile(tree);
-
     }
 }

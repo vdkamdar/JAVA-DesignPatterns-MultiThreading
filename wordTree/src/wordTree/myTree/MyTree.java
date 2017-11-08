@@ -5,12 +5,13 @@ import wordTree.store.Results;
 import wordTree.util.MyLogger;
 
 /**
- *
- * @author anirtek
+ * @version 4.0
+ * @author Aniruddha Tekade & Vidhi Kamdar Submitted on November 8th, 2017.
  */
 public class MyTree {
 
     private Node root;
+    private int finalWordCount, finalCharCount, distinctWordCount = 0;
 
     public MyTree() {
         MyLogger.writeMessage("Constructor called - " + this.toString(), MyLogger.DebugLevel.CONSTRUCTOR);
@@ -25,12 +26,20 @@ public class MyTree {
         MyLogger.writeMessage("Thread is running - " + this.toString(), MyLogger.DebugLevel.WORD_INSERTION);
         if (root == null) {
             this.root = new Node(wordIn);
+            finalWordCount += 1;
+            finalCharCount += wordIn.length();
+            distinctWordCount += 1;
         } else {
             Node node = searchNode(root, wordIn);
             if (node == null) {
                 insertNode(root, wordIn);
+                finalWordCount += 1;
+                finalCharCount += wordIn.length();
+                distinctWordCount += 1;
             } else {
                 node.setWordCount(node.getWordCount() + 1); //increases by 1 always
+                finalWordCount += 1;
+                finalCharCount += wordIn.length();
             }
         }
     }
@@ -70,6 +79,11 @@ public class MyTree {
         MyLogger.writeMessage("Thread is running - " + this.toString(), MyLogger.DebugLevel.WORD_DELETION);
         Node node = searchNode(root, wordIn);
         if (node != null && node.getWordCount() != 0) {
+            finalWordCount -= 1;
+            finalCharCount -= node.getWord().length();
+            if (node.getWordCount() == 1) {
+                distinctWordCount -= 1;
+            }
             node.setWordCount(node.getWordCount() - 1);
         }
     }
@@ -87,10 +101,15 @@ public class MyTree {
         }
     }
 
+    public void printCounts(ArrayList<String> results) {
+        results.add("The total number of words: " + String.valueOf(finalWordCount));
+        results.add("The total number of characters: " + String.valueOf(finalCharCount));
+        results.add("The total number of distinct words: " + String.valueOf(distinctWordCount));
+    }
+
     @Override
     public String toString() {
         return "Class : wordTree.myTree.MyTree"; //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
 }

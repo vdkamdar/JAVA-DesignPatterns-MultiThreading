@@ -3,13 +3,14 @@ package wordTree.myTree;
 import wordTree.util.MyLogger;
 
 /**
- *
- * @author anirtek
+ * @version 4.0
+ * @author Aniruddha Tekade & Vidhi Kamdar Submitted on November 8th, 2017.
  */
 public class Node {
 
     String word;
     int wordCount;
+    int wordLength;
     Node left;
     Node right;
 
@@ -53,6 +54,5 @@ public class Node {
     public String toString() {
         return "Class : wordTree.myTree.Node"; //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
 }

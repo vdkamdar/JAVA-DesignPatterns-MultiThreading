@@ -7,8 +7,8 @@ import wordTree.util.InputProcessor;
 import wordTree.util.MyLogger;
 
 /**
- *
- * @author anirtek
+ * @version 1.0
+ * @author Aniruddha Tekade & Vidhi Kamdar Submitted on November 8th, 2017.
  */
 public class PopulateThread implements Runnable {
 

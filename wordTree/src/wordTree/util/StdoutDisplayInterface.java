@@ -1,20 +1,12 @@
 package wordTree.util;
 
-/**
- *
- * @author anirtek
- */
-public class StdoutDisplayInterface {
-    
-    public StdoutDisplayInterface() {
-        MyLogger.writeMessage("Constructor called - " + this.toString(), MyLogger.DebugLevel.CONSTRUCTOR);
-    }
+import wordTree.myTree.MyTree;
 
-    @Override
-    public String toString() {
-        return "Class : wordTree.util.StdoutDisplayInterface"; //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
-    
+/**
+ * @version 4.0
+ * @author Aniruddha Tekade & Vidhi Kamdar Submitted on November 8th, 2017.
+ */
+public interface StdoutDisplayInterface {
+
+    public void writeToScreen();
 }

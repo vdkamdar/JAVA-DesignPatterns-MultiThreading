@@ -1,8 +1,8 @@
 package wordTree.util;
 
 /**
- * @version 1.0
- * @author Aniruddha Tekade Submitted on October 19th, 2017.
+ * @version 4.0
+ * @author Aniruddha Tekade & Vidhi Kamdar Submitted on November 8th, 2017.
  */
 public class MyLogger {
 
