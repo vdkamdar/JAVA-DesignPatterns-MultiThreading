@@ -21,6 +21,15 @@ public class CreateWorkers {
     private Results results = null;
     private ArrayList<String> wordsToDelete = null;
 
+    /**
+     * CreateWorker public constructor.
+     *
+     * @param fpIn
+     * @param ipIn
+     * @param treeIn
+     * @param resultsIn
+     * @param wordsToDeleteIn
+     */
     public CreateWorkers(FileProcessor fpIn, InputProcessor ipIn, MyTree treeIn, Results resultsIn, ArrayList<String> wordsToDeleteIn) {
         MyLogger.writeMessage("Constructor called - " + this.toString(), MyLogger.DebugLevel.CONSTRUCTOR);
         this.fp = fpIn;
@@ -30,9 +39,15 @@ public class CreateWorkers {
         this.wordsToDelete = wordsToDeleteIn;
     }
 
+    /**
+     * Creates, starts and joins the thread for inserting the words into the
+     * tree.
+     *
+     * @param numberOfThreads
+     */
     public void startPopulateWorkers(int numberOfThreads) {
         for (int i = 0; i < numberOfThreads; i++) {
-            Thread pCreateThread = new Thread(new PopulateThread(fp, ip, tree, results), "pCreateThread_"+i);
+            Thread pCreateThread = new Thread(new PopulateThread(fp, ip, tree, results), "pCreateThread_" + i);
             pCreateThread.start();
             try {
                 pCreateThread.join();
@@ -42,9 +57,15 @@ public class CreateWorkers {
         }
     }
 
+    /**
+     * Creates, starts and joins the thread for deleting the words into the
+     * three.
+     *
+     * @param numberOfThreads
+     */
     public void startDeleteWorkers(int numberOfThreads) {
         for (int i = 0; i < numberOfThreads; i++) {
-            Thread pDeleteThread = new Thread(new DeleteThread(fp, ip, tree, results, wordsToDelete.get(i)), "pDeleteThread_"+i);
+            Thread pDeleteThread = new Thread(new DeleteThread(fp, ip, tree, results, wordsToDelete.get(i)), "pDeleteThread_" + i);
             pDeleteThread.start();
             try {
                 pDeleteThread.join();
@@ -58,6 +79,5 @@ public class CreateWorkers {
     public String toString() {
         return "Class : wordTree.threadMgmt.CreateWorkers"; //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
 }
