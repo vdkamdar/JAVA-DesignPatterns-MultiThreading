@@ -72,6 +72,9 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
         return "Class : wordTree.store.Results"; //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * Overriden method for writing the output to screen.
+     */
     @Override
     public void writeToScreen() {
         MyLogger.writeMessage(outputFile, MyLogger.DebugLevel.RELEASE);
