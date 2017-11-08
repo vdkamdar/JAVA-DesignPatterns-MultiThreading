@@ -14,6 +14,11 @@ public class Node {
     Node left;
     Node right;
 
+    /**
+     * Public constructor of the class
+     *
+     * @param wordIn
+     */
     public Node(String wordIn) {
         MyLogger.writeMessage("Constructor called - " + this.toString(), MyLogger.DebugLevel.CONSTRUCTOR);
         this.word = wordIn;
@@ -22,30 +27,65 @@ public class Node {
         this.right = null;
     }
 
+    /**
+     * Getter method for word in the node
+     *
+     * @return
+     */
     public String getWord() {
         return word;
     }
 
+    /**
+     * Setter for storing wordCount in the tree nodes.
+     *
+     * @param countIn
+     */
     public void setWordCount(int countIn) {
         this.wordCount = countIn;
     }
 
+    /**
+     * Getter for word count
+     *
+     * @return
+     */
     public int getWordCount() {
         return wordCount;
     }
 
+    /**
+     * Geeter for left node of the root / present working node.
+     *
+     * @return
+     */
     public Node getLeft() {
         return left;
     }
 
+    /**
+     * Setter for left node of the root / present working node.
+     *
+     * @param left
+     */
     public void setLeft(Node left) {
         this.left = left;
     }
 
+    /**
+     * Getter for right node of the root / present working node.
+     *
+     * @return
+     */
     public Node getRight() {
         return right;
     }
 
+    /**
+     * Setter for right node of the root / present working node.
+     *
+     * @param right
+     */
     public void setRight(Node right) {
         this.right = right;
     }
