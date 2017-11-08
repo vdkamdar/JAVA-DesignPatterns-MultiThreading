@@ -70,15 +70,16 @@ public class MyTree {
 //        }
     }
 
-//    public void printNodes(Node current_node, ArrayList<String> outputFileResults) {
-//        if (root == null) {
-//            return;
-//        } else if (current_node != null) {
-//            printNodes(current_node.getLeft(), outputFileResults);
-//
-//            outputFileResults.add(Integer.toString(current_node.getBnumber()) + ":" + current_node.getCourses());
-//
-//            printNodes(current_node.getRight(), outputFileResults);
-//        }
-//    }
+    public void printNodes(Node current_node /*ArrayList<String> outputFileResults*/) {
+        if (root == null) {
+            return;
+        } else if (current_node != null) {
+            printNodes(current_node.getLeft() /*, outputFileResults*/);
+
+            System.out.println(current_node.getWord());
+//            outputFileResults.add(current_node.getWord());
+
+            printNodes(current_node.getRight()/*, outputFileResults*/);
+        }
+    }
 }
