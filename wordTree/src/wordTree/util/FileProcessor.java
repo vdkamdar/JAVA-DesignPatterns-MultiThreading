@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Scanner;
+import java.util.logging.Level;
 import wordTree.myTree.MyTree;
 
 /**
@@ -16,6 +18,7 @@ import wordTree.myTree.MyTree;
 public class FileProcessor {
 
     private String inputFileName = "", outputFileName = "";
+    private Scanner in = null;
 
     /**
      * Parameterized constructor of the class that sets the different filename
@@ -38,6 +41,12 @@ public class FileProcessor {
         } else {
             this.outputFileName = outputFileIn;
         }
+        File inputFile = new File(inputFileName);
+        try {
+            in = new Scanner(inputFile);
+        } catch (FileNotFoundException ex) {
+            java.util.logging.Logger.getLogger(FileProcessor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -47,28 +56,29 @@ public class FileProcessor {
      *
      * @param sf
      */
-    public void readLine(MyTree tree) {
-        try (BufferedReader lineIn = new BufferedReader(new FileReader(inputFileName))) {
-            try {
-                for (String line; (line = lineIn.readLine()) != null;) {
-                    try {
-                        String [] inputPass = line.split("[^a-zA-Z0-9']+");
-                        for (int i = 0; i < inputPass.length; i++) {
-                            tree.insert(inputPass[i]);
-                        }
-                    } catch (NumberFormatException ex) {
-                        System.out.println(ex);
-                    }
-                }
-            } catch (IOException ex) {
-                System.out.println(ex);
-            } finally {
-                lineIn.close();
+    public String readLine() {
+        String line = "";
+        try {
+            if (in == null) {
+                throw new RuntimeException("File is closed!");
             }
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex);
-        } catch (IOException ex) {
-            System.out.println(ex);
+            while (in.hasNext()) {
+                line = in.next();
+                return line;
+            }
+            line = null;
+            closeInScanner();
+            return line;
+        } catch (Exception e) {
+            closeInScanner();
+            throw e;
+        }
+    }
+
+    public void closeInScanner() {
+        if (in != null) {
+            in.close();
+            in = null;
         }
     }
 
