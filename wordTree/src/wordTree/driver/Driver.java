@@ -2,6 +2,9 @@ package wordTree.driver;
 
 import java.util.ArrayList;
 import wordTree.myTree.MyTree;
+import wordTree.myTree.Node;
+import wordTree.store.Results;
+import wordTree.threadMgmt.CreateWorkers;
 import wordTree.util.FileProcessor;
 import wordTree.util.InputProcessor;
 
@@ -55,21 +58,25 @@ public class Driver {
             System.out.println(word);
         }
         System.out.println("Debug value: " + debugLevel);
-        
-        /**
-         * Create FileProcessor instance.
-         */
-        FileProcessor fp = new FileProcessor(inputFile, outputFile);
-        
-        /**
-         * Create InputProcessor instance.
-         */
+
         InputProcessor fip = new InputProcessor();
-        
-        /**
-         * Create MyTree instance and try to insert.
-         */
+        FileProcessor fp = new FileProcessor(inputFile, outputFile);
         MyTree tree = new MyTree();
-        fp.readLine(tree);
+        Results results = new Results();
+        
+        CreateWorkers CW = new CreateWorkers(tree, results);
+        
+        String line = "";
+        
+        while ((line = fp.readLine()) != null) {
+            System.out.println(line);
+            String[] inputPass = fip.processInput(line);
+            for (int i = 0; i < inputPass.length; i++) {
+                tree.insert(inputPass[i]);
+                CW.startPopulateWorkers(NUM_THREADS); //***********
+            }
+        }
+        Node rootNode = tree.getRoot();
+        tree.printNodes(rootNode);
     }
 }
