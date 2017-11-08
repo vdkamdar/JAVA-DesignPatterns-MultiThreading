@@ -7,6 +7,7 @@ import wordTree.myTree.MyTree;
 import wordTree.store.Results;
 import wordTree.util.FileProcessor;
 import wordTree.util.InputProcessor;
+import wordTree.util.MyLogger;
 
 /**
  *
@@ -21,6 +22,7 @@ public class CreateWorkers {
     private ArrayList<String> wordsToDelete = null;
 
     public CreateWorkers(FileProcessor fpIn, InputProcessor ipIn, MyTree treeIn, Results resultsIn, ArrayList<String> wordsToDeleteIn) {
+        MyLogger.writeMessage("Constructor called - " + this.toString(), MyLogger.DebugLevel.CONSTRUCTOR);
         this.fp = fpIn;
         this.ip = ipIn;
         this.tree = treeIn;
@@ -51,4 +53,11 @@ public class CreateWorkers {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "Class : wordTree.threadMgmt.CreateWorkers"; //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 }
