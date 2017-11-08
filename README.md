@@ -45,7 +45,7 @@ The assignment is based on the implementation of multithreaded tree operations.
 * Driver code now calls the writeSchedulesToFile() method on the instance of Results.
 * The writeSchedulesToFile() method writes the final word, character and distinct word counts into the output file provided by user successfully.
 
-### Debugger Level Desciptions ###
+## Debugger Level Desciptions ##
 
 * DEBUG_VALUE=4 [Print to stdout everytime a constructor is called]
 * BUG_VALUE=3 [Print to stdout everytime the thread is run] 
@@ -53,7 +53,7 @@ The assignment is based on the implementation of multithreaded tree operations.
 * BUG_VALUE=1 [Print to stdout everytime a deletiontion is attempted in the tree]
 * BUG_VALUE=0 [No output should be printed from the application to stdout. It is ok to write to the output file though" ]
 
-### How To Run This Project ###
+## How To Run This Project ##
 
 You need to be in the base directory of the project to perform following operations :
 
@@ -61,7 +61,7 @@ You need to be in the base directory of the project to perform following operati
 * To build : ant -buildfile src/build.xml all
 * To run : ant -buildfile src/build.xml run -Darg0=InputFile -Darg1=OutputFile -Darg2=NumberOfThreads -Darg3=word1 -Darg4=word2 -Darg5=word3 -Darg6=DebugLevelInteger
 
-### File Structure ###
+## File Structure ##
 
 * wordTree 
 * == README.md
@@ -83,7 +83,7 @@ You need to be in the base directory of the project to perform following operati
 *	   		=== PopulateThread.java
 *	   		=== DeleteThread.java
 
-### Cautions about the project ###
+## Cautions about the project ##
 
 * It accepts minimum 7 arguments: input file name, output file name, an integer for number of threads, words to deleted, an integer for debug level.
 * If the number of words to be deleted should be equal to the number of threads. Throws exception and exists the program; otherwise.
@@ -91,14 +91,14 @@ You need to be in the base directory of the project to perform following operati
 * If the output file specified does not exist, then it creates the file "Output.txt" and writes theh final output into it.
 * This project considers case-sensitivity between the strings being compared.
 
-### Who do I talk to? ###
+## Who do I talk to? ##
 
 * Owner1: Aniruddha Tekade | atekade1@binghamton.edu [Admin]
 * Owner2: Vidhi Kamdar | vkamdar1@binghamton.edu [Admin]
 * Reader1: Gaurav Rattihali | grattih1@binghamton.edu [Read]
 * Reader2: Pankaj Saha | psaha4@binghamton.edu [Read]
 
-### Declaration ###
+## Declaration ##
 
 "I have done this assignment completely on my own. I have not copied 
 it, nor have I given my solution to anyone else. I understand that if
