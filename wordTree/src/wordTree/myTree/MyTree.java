@@ -1,5 +1,6 @@
 package wordTree.myTree;
 
+import java.util.ArrayList;
 import wordTree.store.Results;
 import wordTree.util.MyLogger;
 
@@ -73,14 +74,14 @@ public class MyTree {
         }
     }
 
-    public void printNodes(Node current_node, Results results) {
+    public void printNodes(Node current_node, ArrayList<String> results) {
         if (root == null) {
             return;
         } else if (current_node != null) {
             printNodes(current_node.getLeft(), results);
 
             if (current_node.getWordCount() >= 1) {
-                results.storeLine(current_node.getWord());
+                results.add(current_node.getWord());
             }
             printNodes(current_node.getRight(), results);
         }
