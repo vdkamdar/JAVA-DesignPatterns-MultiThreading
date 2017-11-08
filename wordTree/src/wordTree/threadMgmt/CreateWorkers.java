@@ -1,5 +1,6 @@
 package wordTree.threadMgmt;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import wordTree.myTree.MyTree;
@@ -17,27 +18,37 @@ public class CreateWorkers {
     private InputProcessor ip = null;
     private MyTree tree = null;
     private Results results = null;
+    private ArrayList<String> wordsToDelete = null;
 
-    public CreateWorkers(FileProcessor fpIn, InputProcessor ipIn, MyTree treeIn, Results resultsIn) {
+    public CreateWorkers(FileProcessor fpIn, InputProcessor ipIn, MyTree treeIn, Results resultsIn, ArrayList<String> wordsToDeleteIn) {
         this.fp = fpIn;
         this.ip = ipIn;
         this.tree = treeIn;
         this.results = resultsIn;
+        this.wordsToDelete = wordsToDeleteIn;
     }
 
     public void startPopulateWorkers(int numberOfThreads) {
         for (int i = 0; i < numberOfThreads; i++) {
-            Thread pThread = new Thread(new PopulateThread(fp, ip, tree, results), "pThread_"+i);
-            pThread.start();
+            Thread pCreateThread = new Thread(new PopulateThread(fp, ip, tree, results), "pCreateThread_"+i);
+            pCreateThread.start();
             try {
-                pThread.join();
+                pCreateThread.join();
             } catch (InterruptedException ex) {
                 Logger.getLogger(CreateWorkers.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
 
-    public void startDeleteWorkers() {
-
+    public void startDeleteWorkers(int numberOfThreads) {
+        for (int i = 0; i < numberOfThreads; i++) {
+            Thread pDeleteThread = new Thread(new DeleteThread(fp, ip, tree, results, wordsToDelete.get(i)), "pDeleteThread_"+i);
+            pDeleteThread.start();
+            try {
+                pDeleteThread.join();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(CreateWorkers.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }

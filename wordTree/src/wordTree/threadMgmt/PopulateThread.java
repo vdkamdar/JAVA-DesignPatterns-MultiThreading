@@ -25,10 +25,8 @@ public class PopulateThread implements Runnable{
 
     public void run() {
         System.out.println("****" + Thread.currentThread().getName() + "****");
-//        System.out.println();
         String line;
         while ((line = fp.readLine()) != null) {
-//            System.out.println(line);
             String[] inputPass = ip.processInput(line);
             for (int i = 0; i < inputPass.length; i++) {
                 String inputWord = inputPass[i];

@@ -24,7 +24,7 @@ public class MyTree {
             if (node == null) {
                 insertNode(root, wordIn);
             } else {
-                node.setWordCount(); //increases by 1 always
+                node.setWordCount(node.getWordCount() + 1); //increases by 1 always
             }
         }
     }
@@ -60,14 +60,11 @@ public class MyTree {
         }
     }
 
-    public synchronized void delete(int bNumber, String course) {
-//        Node status = searchNode(root, bNumber);
-//        if (status != null) {
-//            ArrayList<String> courses = status.getCourses();
-//            courses.remove(course);
-//            status.setCourses(courses);
-//            status.notifyAll(courses);
-//        }
+    public synchronized void delete(String wordIn) {
+        Node node = searchNode(root, wordIn);
+        if (node != null && node.getWordCount() != 0) {
+            node.setWordCount(node.getWordCount() - 1);
+        }
     }
 
     public void printNodes(Node current_node /*ArrayList<String> outputFileResults*/) {
@@ -76,6 +73,7 @@ public class MyTree {
         } else if (current_node != null) {
             printNodes(current_node.getLeft() /*, outputFileResults*/);
 
+            if(current_node.getWordCount() >= 1)
             System.out.println(current_node.getWord());
 //            outputFileResults.add(current_node.getWord());
 

@@ -22,8 +22,8 @@ public class Node {
         return word;
     }
 
-    public void setWordCount() {
-        this.wordCount += 1;
+    public void setWordCount(int countIn) {
+        this.wordCount  = countIn;
     }
     
     public int getWordCount() {

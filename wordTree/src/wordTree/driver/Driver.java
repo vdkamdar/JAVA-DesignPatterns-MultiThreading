@@ -63,12 +63,20 @@ public class Driver {
         InputProcessor inputProc = new InputProcessor();
         MyTree tree = new MyTree();
         Results results = new Results();
-        
-        CreateWorkers createWorkers = new CreateWorkers(fileProc, inputProc, tree, results);
-        
+
+        CreateWorkers createWorkers = new CreateWorkers(fileProc, inputProc, tree, results, wordsToDelete);
+
         createWorkers.startPopulateWorkers(NUM_THREADS);
-        
+        System.out.println("====================\n"
+                + "Tree is inserted");
         Node root = tree.getRoot();
         tree.printNodes(root);
+        
+        
+        createWorkers.startDeleteWorkers(NUM_THREADS);
+        System.out.println("===================="
+                + "Tree deletion is done");
+        tree.printNodes(root);
+
     }
 }
