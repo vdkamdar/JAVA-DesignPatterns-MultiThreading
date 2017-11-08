@@ -6,24 +6,25 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import wordTree.myTree.MyTree;
+import wordTree.util.FileDisplayInterface;
 import wordTree.util.MyLogger;
+import wordTree.util.StdoutDisplayInterface;
 
 /**
- *
- * @author anirtek
+ * @version 4.0
+ * @author Aniruddha Tekade & Vidhi Kamdar Submitted on November 8th, 2017.
  */
-public class Results {
+public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 
     private String outputFile = "";
     public ArrayList<String> status;
-
     /**
      * Constructor of the Results class.
      *
      * @param tree
      * @param outputFileName
      */
-    public Results( String outputFileName) {
+    public Results(String outputFileName) {
         MyLogger.writeMessage("Constructor called - " + this.toString(), MyLogger.DebugLevel.CONSTRUCTOR);
         this.outputFile = outputFileName;
         status = new ArrayList();
@@ -43,12 +44,12 @@ public class Results {
      * respective output file.
      */
     public void writeSchedulesToFile(MyTree tree) {
-        tree.printNodes(tree.getRoot(), this.status);
+        tree.printCounts(status);
         for (int i = 0; i < status.size(); i++) {
             writeToFile(status.get(i));
         }
     }
-
+    int debugLevel = 5;
     /**
      * Performs actual writing into the file specified.
      *
@@ -70,6 +71,10 @@ public class Results {
     public String toString() {
         return "Class : wordTree.store.Results"; //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
+    @Override
+    public void writeToScreen() {
+        MyLogger.writeMessage(outputFile, MyLogger.DebugLevel.RELEASE);
+    }
+
 }
