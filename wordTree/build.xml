@@ -1,0 +1,67 @@
+<project name="wordTree" default="compile_all" basedir="..">
+
+  <property name="BUILD.compiler"       value="modern"/>
+  <property name="src"                  value="src"/>
+  <property name="BUILD"                value="src/BUILD"/>
+  <property name="classes"              value="${BUILD}/classes"/>
+
+
+  <target name="all" depends="compile_all"/>
+
+  <target name="compile_all"
+          depends="wordTree"/>
+
+  <target name="clean">
+       <delete dir="${BUILD}"/>
+  </target>
+
+  <!-- Prepare target directories -->
+  <target name="prepare">
+        <mkdir dir="${BUILD}"/>
+        <mkdir dir="${classes}"/>
+  </target>
+
+
+ <target name="jar">
+        <mkdir dir="${BUILD}/jar"/>
+        <jar destfile="${BUILD}/jar/wordTree.jar" basedir="${BUILD}/classes">
+            <manifest>
+                <attribute name="Main-Class" value="wordTree.driver.Driver"/>
+            </manifest>
+        </jar>
+    </target>
+
+
+
+  <!-- ** means all subdirectories as well -->
+  <!-- * means all files in the current directory -->
+  <!-- for just java files use *.java -->
+
+  <target name="wordTree" depends="prepare">
+    <javac srcdir="${src}"
+           includes="wordTree/**"
+           excludes="**/package.html"
+           destdir="${classes}"
+           classpath="${classes}"
+           debug="on"
+           optimize="on"
+           deprecation="off"/>
+  </target>
+
+
+<target name="run" depends="jar">
+        <java jar="${BUILD}/jar/wordTree.jar"  fork="true">
+		<arg value="${arg0}"/>
+		<arg value="${arg1}"/>
+		<arg value="${arg2}"/>
+		<arg value="${arg3}"/>
+		<arg value="${arg4}"/>
+		<arg value="${arg5}"/>
+		<arg value="${arg6}"/>
+		
+        </java>
+	
+    </target>
+
+
+</project>
