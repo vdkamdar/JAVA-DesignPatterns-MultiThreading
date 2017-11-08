@@ -2,7 +2,6 @@ package wordTree.driver;
 
 import java.util.ArrayList;
 import wordTree.myTree.MyTree;
-import wordTree.myTree.Node;
 import wordTree.store.Results;
 import wordTree.threadMgmt.CreateWorkers;
 import wordTree.util.FileProcessor;
@@ -51,32 +50,26 @@ public class Driver {
             System.exit(1);
         }
 
-        System.out.println("Input File: " + inputFile);
-        System.out.println("Output File: " + outputFile);
-        System.out.println("NUM_THREADS: " + NUM_THREADS);
-        for (String word : wordsToDelete) {
-            System.out.println(word);
-        }
-        System.out.println("Debug value: " + debugLevel);
+//        System.out.println("Input File: " + inputFile);
+//        System.out.println("Output File: " + outputFile);
+//        System.out.println("NUM_THREADS: " + NUM_THREADS);
+//        for (String word : wordsToDelete) {
+//            System.out.println(word);
+//        }
+//        System.out.println("Debug value: " + debugLevel);
 
         FileProcessor fileProc = new FileProcessor(inputFile, outputFile);
         InputProcessor inputProc = new InputProcessor();
         MyTree tree = new MyTree();
-        Results results = new Results();
+        Results results = new Results(outputFile);
 
         CreateWorkers createWorkers = new CreateWorkers(fileProc, inputProc, tree, results, wordsToDelete);
 
         createWorkers.startPopulateWorkers(NUM_THREADS);
-        System.out.println("====================\n"
-                + "Tree is inserted");
-        Node root = tree.getRoot();
-        tree.printNodes(root);
-        
-        
+
         createWorkers.startDeleteWorkers(NUM_THREADS);
-        System.out.println("===================="
-                + "Tree deletion is done");
-        tree.printNodes(root);
+        
+        results.writeSchedulesToFile(tree);
 
     }
 }
