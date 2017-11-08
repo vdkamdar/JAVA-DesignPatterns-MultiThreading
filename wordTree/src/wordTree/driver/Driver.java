@@ -71,14 +71,32 @@ public class Driver {
          * Creating instance of the InputProcessor
          */
         InputProcessor inputProc = new InputProcessor();
+        
         /**
-         * Create an instance
+         * Create an instance of MyTree
          */
         MyTree tree = new MyTree();
+        
+        /**
+         * Create instance of Results
+         */
         Results results = new Results(outputFile);
+        
+        /**
+         * Create working threads instance of CreateWorkers
+         */
         CreateWorkers createWorkers = new CreateWorkers(fileProc, inputProc, tree, results, wordsToDelete);
+        
+        /**
+         * Populate the threads
+         */
         createWorkers.startPopulateWorkers(NUM_THREADS);
+        
+        /**
+         * Create deletion threads
+         */
         createWorkers.startDeleteWorkers(NUM_THREADS);
+        
         results.writeToScreen();
         results.writeSchedulesToFile(tree);
     }
