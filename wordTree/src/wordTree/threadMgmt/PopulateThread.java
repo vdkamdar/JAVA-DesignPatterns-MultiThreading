@@ -17,6 +17,14 @@ public class PopulateThread implements Runnable {
     private MyTree tree = null;
     private Results results = null;
 
+    /**
+     * Public constructor.
+     *
+     * @param fpIn
+     * @param ipIn
+     * @param treeIn
+     * @param resultsIn
+     */
     public PopulateThread(FileProcessor fpIn, InputProcessor ipIn, MyTree treeIn, Results resultsIn) {
         MyLogger.writeMessage("Constructor called - " + this.toString(), MyLogger.DebugLevel.CONSTRUCTOR);
         fp = fpIn;
@@ -25,6 +33,9 @@ public class PopulateThread implements Runnable {
         results = resultsIn;
     }
 
+    /**
+     * Runs the thread and get the work done.
+     */
     public void run() {
         MyLogger.writeMessage("Thread is running - " + this.toString(), MyLogger.DebugLevel.THREAD_RUN);
         String line;
@@ -41,7 +52,5 @@ public class PopulateThread implements Runnable {
     public String toString() {
         return "Class : wordTree.threadMgmt.PopulateThread"; //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
 
 }
