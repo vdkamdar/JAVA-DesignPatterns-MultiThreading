@@ -19,6 +19,15 @@ public class DeleteThread implements Runnable {
     private Results results = null;
     private String wordToBeDeleted = null;
 
+    /**
+     * Public constructor of the class.
+     *
+     * @param fpIn
+     * @param ipIn
+     * @param treeIn
+     * @param resultsIn
+     * @param wordIn
+     */
     DeleteThread(FileProcessor fpIn, InputProcessor ipIn, MyTree treeIn, Results resultsIn, String wordIn) {
         MyLogger.writeMessage("Constructor called - " + this.toString(), MyLogger.DebugLevel.CONSTRUCTOR);
         fp = fpIn;
@@ -28,6 +37,9 @@ public class DeleteThread implements Runnable {
         wordToBeDeleted = wordIn;
     }
 
+    /**
+     * Runs the thread.
+     */
     public void run() {
         MyLogger.writeMessage("Thread is running - " + this.toString(), MyLogger.DebugLevel.THREAD_RUN);
         tree.delete(wordToBeDeleted);
@@ -37,7 +49,5 @@ public class DeleteThread implements Runnable {
     public String toString() {
         return "Class : wordTree.threadMgmt.DeleteThread"; //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
 
 }
