@@ -13,15 +13,26 @@ public class MyTree {
     private Node root;
     private int finalWordCount, finalCharCount, distinctWordCount = 0;
 
+    /**
+     * public constructor of the class
+     */
     public MyTree() {
         MyLogger.writeMessage("Constructor called - " + this.toString(), MyLogger.DebugLevel.CONSTRUCTOR);
         root = null;
     }
 
+    /**
+     * getter method of root node
+     * @return 
+     */
     public Node getRoot() {
         return root;
     }
 
+    /**
+     * Thread-safe method for inserting the nodes.
+     * @param wordIn 
+     */
     public synchronized void insert(String wordIn) {
         MyLogger.writeMessage("Thread is running - " + this.toString(), MyLogger.DebugLevel.WORD_INSERTION);
         if (root == null) {
@@ -44,6 +55,12 @@ public class MyTree {
         }
     }
 
+    /**
+     * Thread safe method for performing insertion operations.
+     * 
+     * @param node
+     * @param wordIn 
+     */
     public synchronized void insertNode(Node node, String wordIn) {
         if (node.getWord().compareTo(wordIn) > 0) {
             if (node.getLeft() == null) {
@@ -61,6 +78,7 @@ public class MyTree {
     }
 
     /**
+     * Searches the particular node with the input word in the tree.
      * @return Node - null if node not present, else returns the node
      */
     public synchronized Node searchNode(Node node, String wordIn) {
@@ -75,6 +93,10 @@ public class MyTree {
         }
     }
 
+    /**
+     * Performs thread-safe deletion on the tree.
+     * @param wordIn 
+     */
     public synchronized void delete(String wordIn) {
         MyLogger.writeMessage("Thread is running - " + this.toString(), MyLogger.DebugLevel.WORD_DELETION);
         Node node = searchNode(root, wordIn);
@@ -88,6 +110,11 @@ public class MyTree {
         }
     }
 
+    /**
+     * Prints the tree words in the sorted fashion using in-order traversal.
+     * @param current_node
+     * @param results 
+     */
     public void printNodes(Node current_node, ArrayList<String> results) {
         if (root == null) {
             return;
@@ -101,6 +128,10 @@ public class MyTree {
         }
     }
 
+    /**
+     * Prints the final counts of the tree status.
+     * @param results 
+     */
     public void printCounts(ArrayList<String> results) {
         results.add("The total number of words: " + String.valueOf(finalWordCount));
         results.add("The total number of characters: " + String.valueOf(finalCharCount));
